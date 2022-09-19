@@ -16,3 +16,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/reseller', function () {
+    return view('reseller');
+});
+
+Route::get('/supplier', function () {
+    return view('supplier');
+});
+
+Route::get('/daftar-reseller', function () {
+    return view('pendaftaran.daftar-reseller');
+});
+
+Route::get('/daftar-supplier', function () {
+    return view('pendaftaran.daftar-supplier');
+});
+
+//product
+Route::resource('products','ProductController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
