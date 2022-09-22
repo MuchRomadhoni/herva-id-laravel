@@ -7,24 +7,32 @@
             <img src="{{ asset('img/right.png') }}" class="ornament-right img-fluid" />
         </section>
         <div class="container px-5">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Maaf</strong> Data yang anda inputkan bermasalah.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+            @if ($message = Session::get('success'))
+                <div class="justify-content-center d-flex">
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
                 </div>
             @endif
 
+            @if ($errors->any())
+                <div class="justify-content-center d-flex">
+                    <div class="alert alert-danger">
+                        <strong>Maaf</strong> Data yang anda inputkan bermasalah.<br><br>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
             <header class="section-header">
                 <h2>daftar</h2>
-                <p>Form Pendaftaran Reseller</p>
+                <p>Form Pendaftaran Supplier</p>
             </header>
-
             <div class="row">
-                <form action="{{ route('daftarReseller.store') }}" method="POST">
+                <form action="daftar-supplier/store" method="POST">
                     @csrf
                     <div class="form-group row mt-3">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
@@ -53,6 +61,22 @@
                             <input name="alamat" type="text" class="form-control" id="alamat" placeholder="" />
                         </div>
                     </div>
+                    <div class="form-group row mt-3">
+                        <label for="alamat-gudang" class="col-sm-2 col-form-label">Alamat Gudang</label>
+                        <div class="col-sm-10">
+                            <input name="gudang" type="text" class="form-control" id="alamat" placeholder="" />
+                        </div>
+                    </div>
+                    <div class="form-group row mt-3 d-none">
+                        <label for="status" class="col-sm-2 col-form-label">status</label>
+                        <div class="col-sm-10">
+                            <select id="status" class="form-control" name="status">
+                                {{-- <input name="status" type="text" class="form-control" id="alamat" placeholder="" /> --}}
+                                <option selected value="Supplier"></option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group row mx-auto col-sm-2">
                         <a>
                             <button type="submit"

@@ -135,7 +135,8 @@
                         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Akun</h6>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  " href="../pages/profile.html">
+                        <a class="nav-link  " href="{{ route('logout') }}"
+                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -161,12 +162,42 @@
                                     </g>
                                 </svg>
                             </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                             <span class="nav-link-text ms-1">Log Out</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </aside>
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+            navbar-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div class="input-group">
+                            <span class="input-group-text text-body"><i class="fas fa-search"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" placeholder="Type here...">
+                        </div>
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                    <i class="sidenav-toggler-line"></i>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             <div class="container-fluid py-4">
                 {{-- <div class="row">
@@ -436,79 +467,50 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="row">
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                {{-- <div class="row">
                     <div class="col-12 mt-4">
                         <div class="card">
                             <div class="card-header pb-0 px-3">
-                                <h6 class="mb-0">Daftar Supplier Baru</h6>
+                                <h6 class="mb-0">Daftar Reseller Baru</h6>
                             </div>
                             <div class="card-body pt-4 p-3">
                                 <ul class="list-group">
-                                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-3 text-sm">Oliver Liam</h6>
-                                            <span class="mb-2 text-xs">Company Name: <span
-                                                    class="text-dark font-weight-bold ms-sm-2">Viking Burrito</span></span>
-                                            <span class="mb-2 text-xs">Alamat Email: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">oliver@burrito.com</span></span>
-                                            <span class="mb-2 text-xs">Nomor HP: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                            <span class="mb-2 text-xs">Alamat: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">Lorem, ipsum dolor sit amet
-                                                    consectetur adipisicing elit.</span></span>
-                                            <span class="text-xs">Alamat Gudang: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                        </div>
-                                        <div class="ms-auto text-end">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                    class="fas fa-pencil-alt text-dark me-2"
-                                                    aria-hidden="true"></i>Edit</a>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-3 text-sm">Lucas Harper</h6>
-                                            <span class="mb-2 text-xs">Company Name: <span
-                                                    class="text-dark font-weight-bold ms-sm-2">Stone Tech
-                                                    Zone</span></span>
-                                            <span class="mb-2 text-xs">Email Address: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">lucas@stone-tech.com</span></span>
-                                            <span class="text-xs">VAT Number: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                        </div>
-                                        <div class="ms-auto text-end">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                    class="fas fa-pencil-alt text-dark me-2"
-                                                    aria-hidden="true"></i>Edit</a>
-                                        </div>
-                                    </li>
-                                    <li class="list-group-item border-0 d-flex p-4 mb-2 mt-3 bg-gray-100 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-3 text-sm">Ethan James</h6>
-                                            <span class="mb-2 text-xs">Company Name: <span
-                                                    class="text-dark font-weight-bold ms-sm-2">Fiber Notion</span></span>
-                                            <span class="mb-2 text-xs">Email Address: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">ethan@fiber.com</span></span>
-                                            <span class="text-xs">VAT Number: <span
-                                                    class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
-                                        </div>
-                                        <div class="ms-auto text-end">
-                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                                            <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                    class="fas fa-pencil-alt text-dark me-2"
-                                                    aria-hidden="true"></i>Edit</a>
-                                        </div>
-                                    </li>
+                                    @foreach ($daftarReseller as $daftarreseller)
+                                        <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                                            <div class="d-flex flex-column">
+                                                <h6 class="mb-3 text-sm">{{ $daftarreseller->nama }}</h6>
+                                                <span class="mb-2 text-xs">ID: <span
+                                                        class="text-dark font-weight-bold ms-sm-2">{{ $daftarreseller->id }}</span></span>
+                                                <span class="mb-2 text-xs">Alamat Email: <span
+                                                        class="text-dark ms-sm-2 font-weight-bold">{{ $daftarreseller->email }}</span></span>
+                                                <span class="mb-2 text-xs">Nomor HP: <span
+                                                        class="text-dark ms-sm-2 font-weight-bold">{{ $daftarreseller->hp }}</span></span>
+                                                <span class="mb-2 text-xs">Alamat: <span
+                                                        class="text-dark ms-sm-2 font-weight-bold">{{ $daftarreseller->alamat }}</span></span>
+                                            </div>
+                                            <div class="ms-auto text-end">
+                                                <form action="{{ route('daftarReseller.destroy', $daftarReseller->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a type="submit"
+                                                        class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                        href="javascript:;"><i
+                                                            class="far fa-trash-alt me-2"></i>Delete</a>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-12 mt-4">
                         <div class="card mb-4">

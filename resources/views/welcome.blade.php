@@ -1,6 +1,13 @@
 @extends('layouts.mainLayout')
 
 @section('content')
+    @if ($message = Session::get('success'))
+        <div class="justify-content-center d-flex">
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        </div>
+    @endif
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="hero d-flex align-items-center position-relative">
         <section class="ornament">
@@ -9,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 hero-img" data-aos="zoom-out" data-aos-delay="200">
-                    <img src="{{ asset('img/peta-jadi.png') }}" class="img-fluid" alt="" />
+                    <img src="{{ asset('img/peta-jadi-zoom.png') }}" class="img-fluid position-right-45" alt="" />
                 </div>
                 <div class="col-lg-6 d-flex flex-column justify-content-center text-center align-items-center">
                     <h1 data-aos="fade-up">Jawa Timur Berkembang Bersama</h1>
@@ -503,7 +510,7 @@
             <div class="container" data-aos="fade-up">
                 <header class="section-header">
                     <!-- <h2>Services</h2>
-                        <p>Veritatis et dolores facere numquam et praesentium</p> -->
+                                                                <p>Veritatis et dolores facere numquam et praesentium</p> -->
                 </header>
 
                 <div class="row gy-4">
@@ -545,8 +552,8 @@
                                 Semua kami <span><b>Support Habis<sup>2</sup>an</b></span>
                             </h3>
                             <!-- <a href="#" class="read-more"
-                              ><span>Read More</span> <i class="bi bi-arrow-right"></i
-                            ></a> -->
+                                                                      ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                                                                    ></a> -->
                         </div>
                     </div>
                 </div>
@@ -589,8 +596,8 @@
                                     allowfullscreen></iframe>
                             </div>
                             <!-- <a href="#" class="read-more"
-                              ><span>Read More</span> <i class="bi bi-arrow-right"></i
-                            ></a> -->
+                                                                      ><span>Read More</span> <i class="bi bi-arrow-right"></i
+                                                                    ></a> -->
                         </div>
                     </div>
                 </div>

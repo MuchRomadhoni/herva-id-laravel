@@ -13,6 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Error
+Route::get(
+    '/logout',
+    function () {
+        return abort(404);
+    }
+);
+Route::get(
+    '/store',
+    function () {
+        return abort(404);
+    }
+);
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,16 +39,36 @@ Route::get('/supplier', function () {
     return view('supplier');
 });
 
-Route::get('/daftar-reseller', function () {
-    return view('pendaftaran.daftar-reseller');
-});
+// Route::get('/daftar-reseller', function () {
+//     return view('pendaftaran.daftar-reseller');
+// })->name('daftar-supplier');
 
 Route::get('/daftar-supplier', function () {
     return view('pendaftaran.daftar-supplier');
 });
 
+ //perangkat desa
+    
+    Route::get('daftar-reseller', 'daftarResellerController@create')->name('create.daftarReseller');
+    Route::post('daftar-reseller/store', 'daftarResellerController@store');
+
+    Route::get('daftar-supplier', 'daftarResellerController@createSupplier')->name('createSupplier.daftarReseller');
+    Route::post('daftar-supplier/store', 'daftarResellerController@storeSupplier');
+
+
 //product
 Route::resource('products','ProductController');
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::resource('daftarReseller','daftarResellerController');
+// Route::resource('home', 'daftarResellerController');
+Route::middleware('auth')->group(function () {
+    
+    Route::get('dashboard', 'daftarResellerController@index');
+    Route::get('daftar-supplier-baru', 'daftarResellerController@indexSupplier');
+    //update
+    Route::get('dashboard/{daftarReseller:id}/edit', 'daftarResellerController@edit');
+    Route::patch('dashboard/{daftarReseller:id}/edit', 'daftarResellerController@update');
+    //delete
+    Route::delete('dashboard/delete/{daftarReseller:id}', 'daftarResellerController@destroy');
+});

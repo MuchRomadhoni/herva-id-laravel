@@ -37,7 +37,7 @@
     @include('components.footer')
 
 
-    <a href="https://wa.me/+6282338202288/?text=Halo min, mau tanya-tanya seputar herva dong"
+    <a href="https://wa.me/+6281234212424/?text=Halo min, mau tanya-tanya seputar herva dong"
         class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 
     <!-- Vendor JS Files -->

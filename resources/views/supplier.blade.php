@@ -27,7 +27,7 @@
                     </h2>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="">
-                            <a href="/daftar-supplier"
+                            <a href="{{ route('createSupplier.daftarReseller') }}"
                                 class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
                                 <span class="text-white">Daftar Sekarang</span>
                                 <i class="bi bi-arrow-right"></i>

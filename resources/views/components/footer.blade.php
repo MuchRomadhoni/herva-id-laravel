@@ -40,16 +40,21 @@
                         </ul>
                     </div>
 
-                    <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                        <h4>Kontak Kami</h4>
-                        <p>
-                            Jl. XXXXXXXXx <br />
-                            Kota Pasuruan<br />
-                            Jawa Timur <br /><br />
-                            <strong>Phone:</strong> +62 82338202288<br />
-                            <strong>Email:</strong> hervamerc@gmail.com<br />
-                        </p>
-                    </div>
+                    <address>
+                        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                            <h4>Kontak Kami</h4>
+                            <p>
+                                Jl. Majapahit, Bugul Kidul <br />
+                                Kota Pasuruan<br />
+                                Jawa Timur <br /><br />
+                                <strong>Phone:</strong><a
+                                    href="https://wa.me/+6281234212424/?text=Halo min, mau tanya-tanya seputar herva dong"></a>
+                                0812-3421-2424<br />
+                                <strong>Email:</strong> <a href="mailto:hervaid.com@gmail.com">
+                                    hervaid.com@gmail.com</a><br />
+                            </p>
+                        </div>
+                    </address>
                 </div>
             </div>
         </div>

@@ -25042,7 +25042,7 @@ hr.horizontal.gray-light {
 
 .table td,
 .table th {
-    white-space: nowrap;
+    max-width: 250px;
 }
 
 .table.align-items-center td,
