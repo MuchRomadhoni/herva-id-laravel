@@ -58,7 +58,7 @@ Route::get('/daftar-supplier', function () {
 
 //product
 Route::resource('products','ProductController');
-Auth::routes();
+Auth::routes(['register'=> false]);
 
 // Route::resource('daftarReseller','daftarResellerController');
 // Route::resource('home', 'daftarResellerController');

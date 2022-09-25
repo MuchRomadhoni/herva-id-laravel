@@ -82,9 +82,10 @@
                     Homepage.
                 </p>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-back d-inline-flex text-white">
-                        Back to Homepage
-                    </button>
+                    <a href="/" style="text-decoration: none"><button
+                            class="btn btn-back d-inline-flex text-white">
+                            Back to Homepage
+                        </button></a>
                 </div>
             </div>
         </div>
