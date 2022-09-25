@@ -204,45 +204,59 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($daftarReseller as $daftarreseller)
-                                                <tr>
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="{{ asset('img/user.png') }}"
-                                                                    class="avatar avatar-sm me-3 " alt="">
+                                                @if ($daftarreseller->archive === 0)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex px-2 py-1">
+                                                                <div>
+                                                                    <img src="{{ asset('img/user.png') }}"
+                                                                        class="avatar avatar-sm me-3 " alt="">
 
+                                                                </div>
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <h6 class="mb-0 text-sm">{{ $daftarreseller->nama }}
+                                                                    </h6>
+                                                                    <p class="text-xs text-secondary mb-0">
+                                                                        {{ $daftarreseller->email }}
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">{{ $daftarreseller->nama }}</h6>
-                                                                <p class="text-xs text-secondary mb-0">
-                                                                    {{ $daftarreseller->email }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <p class="text-xs font-weight-bold mb-0">
-                                                            {{ $daftarreseller->alamat }}</p>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span
-                                                            class="text-secondary text-xs font-weight-bold">{{ $daftarreseller->hp }}</span>
-                                                    </td>
-                                                    <td class="align-middle text-center text-sm">
-                                                        <span
-                                                            class="badge badge-sm bg-gradient-success">{{ $daftarreseller->status }}</span>
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        <form action="dashboard/delete/{{ $daftarreseller->id }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0"><button
-                                                                    style="background-color: rgba(12, 12, 12, 0); border :none"><i
-                                                                        class="far fa-trash-alt me-2"></i>
-                                                                </button></a>
-                                                        </form>
-                                                    </td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0">
+                                                                {{ $daftarreseller->alamat }}</p>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <span
+                                                                class="text-secondary text-xs font-weight-bold">{{ $daftarreseller->hp }}</span>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span
+                                                                class="badge badge-sm bg-gradient-success">{{ $daftarreseller->status }}</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <form action="dashboard/delete/{{ $daftarreseller->id }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <a
+                                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"><button
+                                                                        style="background-color: rgba(12, 12, 12, 0); border :none"><i
+                                                                            class="far fa-trash-alt me-2"></i>
+                                                                    </button></a>
+                                                            </form>
+                                                            <form action="dashboard/update/{{ $daftarreseller->id }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <a
+                                                                    class="btn btn-link text-bg-warning text-gradient px-3 mb-0"><button
+                                                                        style="background-color: rgba(12, 12, 12, 0); border :none">
+                                                                        <i class="fa fa-archive"
+                                                                            aria-hidden="true"></i></button></a>
+                                                            </form>
+                                                        </td>
+                                                @endif
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -251,6 +265,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </main>
         <!--   Core JS Files   -->

@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="daftar-supplier-baru">
+                        <a class="nav-link" href="daftar-supplier-baru">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  " href="archive">
+                        <a class="nav-link active" href="/archive">
                             <div
                                 class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -175,11 +175,103 @@
                         <p>{{ $message }} </p>
                     </div>
                 @endif
+                {{-- archive data reseller --}}
                 <div class="row">
                     <div class="col-12 mt-4">
                         <div class="card mb-4">
                             <div class="card-header pb-0">
-                                <h6>Daftar Supplier</h6>
+                                <h6>Daftar Archive Reseller</h6>
+                            </div>
+                            <div class="card-body px-0 pt-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Nama</th>
+                                                <th
+                                                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                    Alamat</th>
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    No HP</th>
+                                                <th
+                                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                    Status</th>
+
+                                                <th class="text-secondary opacity-7"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($daftarReseller as $daftarreseller)
+                                                @if ($daftarreseller->archive === 1 and $daftarreseller->status === 'Reseller')
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex px-2 py-1">
+                                                                <div>
+                                                                    <img src="{{ asset('img/user.png') }}"
+                                                                        class="avatar avatar-sm me-3 " alt="">
+
+                                                                </div>
+                                                                <div class="d-flex flex-column justify-content-center">
+                                                                    <h6 class="mb-0 text-sm">{{ $daftarreseller->nama }}
+                                                                    </h6>
+                                                                    <p class="text-xs text-secondary mb-0">
+                                                                        {{ $daftarreseller->email }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p class="text-xs font-weight-bold mb-0">
+                                                                {{ $daftarreseller->alamat }}</p>
+                                                        </td>
+                                                        <td class="align-middle text-center">
+                                                            <span
+                                                                class="text-secondary text-xs font-weight-bold">{{ $daftarreseller->hp }}</span>
+                                                        </td>
+                                                        <td class="align-middle text-center text-sm">
+                                                            <span
+                                                                class="badge badge-sm bg-gradient-success">{{ $daftarreseller->status }}</span>
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <form action="dashboard/delete/{{ $daftarreseller->id }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <a
+                                                                    class="btn btn-link text-danger text-gradient px-3 mb-0"><button
+                                                                        style="background-color: rgba(12, 12, 12, 0); border :none"><i
+                                                                            class="far fa-trash-alt me-2"></i>
+                                                                    </button></a>
+                                                            </form>
+                                                            <form action="dashboard/update/{{ $daftarreseller->id }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @method('PUT')
+                                                                <a
+                                                                    class="btn btn-link text-bg-warning text-gradient px-3 mb-0"><button
+                                                                        style="background-color: rgba(12, 12, 12, 0); border :none">
+                                                                        <i class="fa fa-archive"
+                                                                            aria-hidden="true"></i></button></a>
+                                                            </form>
+                                                        </td>
+                                                @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- Archive data supplier --}}
+                <div class="row">
+                    <div class="col-12 mt-4">
+                        <div class="card mb-4">
+                            <div class="card-header pb-0">
+                                <h6>Daftar Archive Supplier</h6>
                             </div>
                             <div class="card-body px-0 pt-0 pb-2">
                                 <div class="table-responsive p-0">
@@ -207,7 +299,7 @@
                                         </thead>
                                         <tbody>
                                             @foreach ($daftarReseller as $daftarreseller)
-                                                @if ($daftarreseller->archive === 0)
+                                                @if ($daftarreseller->archive === 1 and $daftarreseller->status === 'Supplier')
                                                     <tr>
                                                         <td>
                                                             <div class="d-flex px-2 py-1">

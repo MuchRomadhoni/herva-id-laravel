@@ -21,6 +21,7 @@ class CreateDaftarResellerTable extends Migration
             $table->text('alamat');
             $table->text('gudang')->nullable();
             $table->text('status');
+            $table->integer('archive')->default(0);
             $table->timestamps();
         });
     }

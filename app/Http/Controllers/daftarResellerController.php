@@ -16,6 +16,7 @@ class daftarResellerController extends Controller
     public function index()
     {
         $daftarReseller = DB::table('daftar-reseller')->where('status', 'Reseller')->get();
+        // $daftarReseller = DB::table('daftar-reseller')->where('status', 'Reseller')->where('archive', 0)->get();
   
         return view('daftarReseller.index',compact('daftarReseller'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -32,6 +33,20 @@ class daftarResellerController extends Controller
         // $daftarReseller = daftarReseller::latest()->paginate(10);
   
         return view('daftarReseller.daftar-supplier',compact('daftarReseller'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexArchive()
+    {
+        $daftarReseller = DB::table('daftar-reseller')->get();
+        // $daftarReseller = daftarReseller::latest()->paginate(10);
+  
+        return view('daftarReseller.archive',compact('daftarReseller'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -125,20 +140,15 @@ class daftarResellerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\daftarReseller  $daftarReseller
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Support\Facades\DB;
      */
-    public function update(Request $request, daftarReseller $daftarReseller)
+    public function update($daftarReseller)
     {
-        $request->validate([
-           'nama' => 'required',
-            'email' => 'required',
-            'hp' => 'required',
-            'alamat' => 'required',
-        ]);
+        DB::table('daftar-reseller')->where('id', $daftarReseller)->update(['archive' => 1]);
   
-        $daftarReseller->update($request->all());
+        // $daftarReseller->update($request->all());
   
-        return redirect()->route('daftarReseller.index')
-                        ->with('success','daftarReseller updated successfully');
+        return back()->with('success','data sudah di archive');
     }
 
     /**
@@ -153,6 +163,6 @@ class daftarResellerController extends Controller
         // $daftarReseller->delete();
         DB::table('daftar-reseller')->where('id', $daftarReseller)->delete();
   
-        return redirect('dashboard')->with('success','data berhasil dihapus pada id');
+        return back()->with('success','data berhasil dihapus');
     }
 }

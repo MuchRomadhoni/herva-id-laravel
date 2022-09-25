@@ -58,7 +58,7 @@ Route::get('/daftar-supplier', function () {
 
 //product
 Route::resource('products','ProductController');
-Auth::routes(['register' => false]);
+Auth::routes();
 
 // Route::resource('daftarReseller','daftarResellerController');
 // Route::resource('home', 'daftarResellerController');
@@ -66,9 +66,10 @@ Route::middleware('auth')->group(function () {
     
     Route::get('dashboard', 'daftarResellerController@index');
     Route::get('daftar-supplier-baru', 'daftarResellerController@indexSupplier');
+    Route::get('archive', 'daftarResellerController@indexArchive');
     //update
-    Route::get('dashboard/{daftarReseller:id}/edit', 'daftarResellerController@edit');
-    Route::patch('dashboard/{daftarReseller:id}/edit', 'daftarResellerController@update');
+    // Route::get('dashboard/{daftarReseller:id}/edit', 'daftarResellerController@edit');
+    Route::put('dashboard/update/{daftarReseller:id}', 'daftarResellerController@update');
     //delete
     Route::delete('dashboard/delete/{daftarReseller:id}', 'daftarResellerController@destroy');
 });

@@ -80,7 +80,8 @@
                     <div class="form-group row mx-auto col-sm-2">
                         <a>
                             <button type="submit"
-                                class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+                                class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center"
+                                style="border :none">
                                 <span class="text-white">Daftar</span>
                                 <i class="bi bi-arrow-right"></i>
                             </button>

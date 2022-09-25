@@ -67,7 +67,6 @@
                         <label for="status" class="col-sm-2 col-form-label">status</label>
                         <div class="col-sm-10">
                             <select id="status" class="form-control" name="status">
-                                {{-- <input name="status" type="text" class="form-control" id="alamat" placeholder="" /> --}}
                                 <option selected value="Reseller"></option>
                             </select>
                         </div>
@@ -76,7 +75,8 @@
                     <div class="form-group row mx-auto col-sm-2">
                         <a>
                             <button type="submit"
-                                class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+                                class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center"
+                                style="border :none">
                                 <span class="text-white">Daftar</span>
                                 <i class="bi bi-arrow-right"></i>
                             </button>
